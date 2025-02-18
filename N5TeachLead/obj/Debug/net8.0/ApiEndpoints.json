@@ -1,0 +1,36 @@
+[
+  {
+    "ContainingType": "N5TeachLead.Controllers.PermissionController",
+    "Method": "AddPermission",
+    "RelativePath": "Permission",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "AppServices.Command.AddPermissionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "AddPermissions"
+  },
+  {
+    "ContainingType": "N5TeachLead.Controllers.PermissionController",
+    "Method": "GetPermissions",
+    "RelativePath": "Permission",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetPermissions"
+  }
+]

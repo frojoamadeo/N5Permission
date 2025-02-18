@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "LQ0TYyk4AeQ=",
+  "success": true,
+  "projectFilePath": "C:\\roofstock\\N5TeachLead\\AppServices\\AppServices.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\felipe.rojo\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\felipe.rojo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\felipe.rojo\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.2\\microsoft.extensions.dependencyinjection.9.0.2.nupkg.sha512",
+    "C:\\Users\\felipe.rojo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.2\\microsoft.extensions.dependencyinjection.abstractions.9.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

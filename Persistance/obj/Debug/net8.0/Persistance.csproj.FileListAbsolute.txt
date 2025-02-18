@@ -1,0 +1,17 @@
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.csproj.AssemblyReference.cache
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.AssemblyInfoInputs.cache
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.AssemblyInfo.cs
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.csproj.CoreCompileInputs.cache
+C:\roofstock\N5TeachLead\Persistance\bin\Debug\net8.0\Persistance.deps.json
+C:\roofstock\N5TeachLead\Persistance\bin\Debug\net8.0\Persistance.dll
+C:\roofstock\N5TeachLead\Persistance\bin\Debug\net8.0\Persistance.pdb
+C:\roofstock\N5TeachLead\Persistance\bin\Debug\net8.0\Domain.dll
+C:\roofstock\N5TeachLead\Persistance\bin\Debug\net8.0\Domain.pdb
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persista.3F568332.Up2Date
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.dll
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\refint\Persistance.dll
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.pdb
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\ref\Persistance.dll
+C:\roofstock\N5TeachLead\Persistance\bin\Debug\net8.0\Persistance.runtimeconfig.json
+C:\roofstock\N5TeachLead\Persistance\obj\Debug\net8.0\Persistance.genruntimeconfig.cache

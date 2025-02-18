@@ -1,0 +1,6 @@
+@N5TeachLead_HostAddress = http://localhost:5082
+
+GET {{N5TeachLead_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

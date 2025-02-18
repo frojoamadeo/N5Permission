@@ -1,0 +1,11 @@
+C:\roofstock\N5TeachLead\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\roofstock\N5TeachLead\Domain\bin\Debug\net8.0\Domain.dll
+C:\roofstock\N5TeachLead\Domain\bin\Debug\net8.0\Domain.pdb
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\Domain.dll
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\Domain.pdb
+C:\roofstock\N5TeachLead\Domain\obj\Debug\net8.0\ref\Domain.dll
