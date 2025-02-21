@@ -10,8 +10,8 @@ namespace Repository
         public static IServiceCollection RegisterRepositories(
             this IServiceCollection services)
         {
-            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-            services.AddTransient<IEmployeePermissionRepository, EmployeePermissionRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeePermissionRepository, EmployeePermissionRepository>();
             return services;
         }
     }

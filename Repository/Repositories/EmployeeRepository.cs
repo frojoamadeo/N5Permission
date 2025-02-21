@@ -46,6 +46,11 @@ namespace Repository.Repositories
             throw new NotImplementedException();
         }
 
+        public Task SaveAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task UpdateAsync(Employee entity)
         {
             throw new NotImplementedException();

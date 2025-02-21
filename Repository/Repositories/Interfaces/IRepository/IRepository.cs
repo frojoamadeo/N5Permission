@@ -16,5 +16,6 @@ namespace Repository.Repositories.Interfaces.IRepository
         Task AddAsync(T entity);
         Task DeleteAsync(T entity);
         Task UpdateAsync(T entity);
+        Task SaveAsync();
     }
 }

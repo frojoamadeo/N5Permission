@@ -7,6 +7,9 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace N5TeachLead.Controllers;
 
+/// <summary>
+/// Manage Employee Permissions
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class PermissionController : ControllerBase
@@ -22,6 +25,11 @@ public class PermissionController : ControllerBase
         _sender = sender;
     }
 
+    /// <summary>
+    /// Add Permission to Employee
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns></returns>
     [HttpPost(Name = "AddPermissions")]
     public async Task<ActionResult> AddPermission(AddPermissionCommand command)
     {
@@ -33,13 +41,19 @@ public class PermissionController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error trying to add permission {permission} to employeeId {employeeId}", command.Permission?.ToString(), command.EmployeeId);
+            _logger.LogError(ex, "Method: {method}: Error trying to add permission {permission} to employeeId {employeeId}", nameof(AddPermission), command.Permission?.ToString(), command.EmployeeId);
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         return Ok();
     }
 
+
+    /// <summary>
+    /// Get all Employee permissions
+    /// </summary>
+    /// <param name="employeeId"></param>
+    /// <returns></returns>
     [HttpGet(Name = "GetPermissions")]
     public async Task<ActionResult> GetPermissions(int employeeId)
     {
@@ -52,7 +66,7 @@ public class PermissionController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error trying to get permission from employeeId {employeeId}", employeeId);
+            _logger.LogError(ex, "Method: {method}. Error trying to get permission from employeeId {employeeId}", nameof(GetPermissions), employeeId);
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }        
     }

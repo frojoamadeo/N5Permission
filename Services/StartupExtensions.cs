@@ -5,6 +5,8 @@ using Repository.Repositories;
 using System.Reflection;
 using AppServices.Interfaces.IServices;
 using Infraestructure.Services;
+using AppServices.Interfaces.IEvents;
+using Infraestructure.Events.Producer;
 
 namespace Services
 {
@@ -22,7 +24,11 @@ namespace Services
         public static void RegisterServices(
             IServiceCollection services)
         {
-            services.AddTransient<IPermissionService, PermissionService>();
+            services.AddScoped<IPermissionService, PermissionService>();
+            services.AddScoped<IElasticSearchService, ElasticSearchService>();
+            
+            //EventServices
+            services.AddScoped<IPermissionOperationProducer, PermissionOperationProducer>();
         }
     }
 }

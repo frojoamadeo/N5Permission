@@ -8,6 +8,7 @@ namespace Domain
 {
     public enum PermissionType
     {
+        Undefinded = 0,
         Read = 1,
         Write = 2,
     }

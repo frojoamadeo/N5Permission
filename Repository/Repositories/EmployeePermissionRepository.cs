@@ -21,9 +21,16 @@ namespace Repository.Repositories
             _dbSet = _context.Set<EmployeePermission>();
         }
 
-        public Task AddAsync(EmployeePermission entity)
+        public async Task AddAsync(EmployeePermission entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _dbSet.AddAsync(entity);
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public Task DeleteAsync(EmployeePermission entity)
@@ -53,7 +60,26 @@ namespace Repository.Repositories
 
         public async Task<IEnumerable<EmployeePermission>> GetByEmployeeIdAsync(int employeeId)
         {
-            return await _dbSet.Where(x => x.EmployeeId == employeeId).ToListAsync();
+            try
+            {
+                return await _dbSet.Where(x => x.EmployeeId == employeeId).ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task SaveAsync()
+        {
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

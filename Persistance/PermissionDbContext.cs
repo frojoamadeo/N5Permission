@@ -7,6 +7,7 @@ namespace Persistance
     public sealed class PermissionDbContext : DbContext
     {
         public const string SchemaPermission = "permission";
+        public bool IsUnitTestRun { get; private set; }
 
         public PermissionDbContext(DbContextOptions options) : base(options)
         {
@@ -28,6 +29,11 @@ namespace Persistance
         {
             new EmployeeSeeds().Seed(modelBuilder);
             new EmployeePermissionSeeds().Seed(modelBuilder);
+        }
+
+        public void SetIsUnitTestRun(bool isTestRun)
+        {
+            IsUnitTestRun = isTestRun;
         }
     }
 }

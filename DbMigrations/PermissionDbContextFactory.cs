@@ -23,7 +23,7 @@ namespace DbMigrations
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            var connectionString = configuration.GetConnectionString("Default")!;
+            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? configuration.GetConnectionString("Default")!;
 
             if (string.IsNullOrWhiteSpace(connectionString))
             {

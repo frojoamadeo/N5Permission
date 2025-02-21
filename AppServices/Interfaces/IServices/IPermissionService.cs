@@ -10,5 +10,7 @@ namespace AppServices.Interfaces.IServices
     public interface IPermissionService
     {
         public Task<IEnumerable<EmployeePermission>> GetPermissionsByEmployeeId(int employeeId);
+        Task AddEmployeePermission(EmployeePermission employeePermission);
+        Task SaveChanges();
     }
 }
