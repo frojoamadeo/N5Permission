@@ -32,21 +32,31 @@
 1. Install the certification manually. \
     [why? Microsoft is no longer creating directories when generates certificates] (https://learn.microsoft.com/en-us/dotnet/core/compatibility/aspnet-core/9.0/certificate-export) https://learn.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-9.0 \
     1.1 Go to solution folder in cmd/powershel \
-    1.2 Run:  \
-      ``` dotnet dev-certs https -ep aspnetapp.pfx -p felipe ``` \
-    1.3 Copy the certificate and paste in  \
-      ``` %USERPROFILE%\AppData\Roaming\ASP.NET\https ``` \
-    1.4 docker should copies certificates to Alpine default cert folder (../home/app/.aspnet/https/) \
-2. Run docker-compose\
-  2.1 Go to solution folder in cmd/powershel\
-  2.2 Run: \
-    ``` docker-compose up --build ``` \
-3. Migrations (Manual migration)\
+    1.2 Run:  
+      ```
+   dotnet dev-certs https -ep aspnetapp.pfx -p felipe
+      ``` 
+    1.3 Copy the certificate and paste in  
+   
+      ```
+   %USERPROFILE%\AppData\Roaming\ASP.NET\https
+      ``` 
+   
+    1.4 docker should copies certificates to Alpine default cert folder (../home/app/.aspnet/https/) 
+3. Run docker-compose \
+  2.1 Go to solution folder in cmd/powershel \
+  2.2 Run: 
+    ```
+   docker-compose up --build
+     ```
+5. Migrations (Manual migration) \
   why? Not easy to run migration in dockerfile because yml do not consider the depends_on: command in a secuencial order. We can run migration following this steps or just in Visual Studio package manager console \
   3.1 Go to <Sln path>/DbMigration with cmd/powershel \
   3.2 Update N5Permission\DbMigrations\appsettings.json connection string by updateing local IP \
-  2.3 Run:\
-    ``` dotnet ef update ``` \
+  2.3 Run: 
+    ```
+   dotnet ef update
+     ```
 
 ### Swagger
 Navigate to ```[https://localhost:5001/swagger](https://localhost:8081/swagger/index.html)``` .
