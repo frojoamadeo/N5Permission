@@ -61,21 +61,26 @@
 ### Swagger
 Navigate to ```[https://localhost:5001/swagger](https://localhost:8081/swagger/index.html)``` .
 
+### Before manual testing:
+
+-For Kafka, I created a consumer proyect in the solution. Is not being deployed to docker. With local Kafka works fine, in docker I am not able to consume. Need more investigation \
+-I integrated Elastic and I implemenetd an elastic services because I was not sure is we need to log entire entitis calling Elastic throw client or just the integration
+
 ### Get Permissions by employee:
 
 **HTTP GET**
-https://localhost:8081/Permission?employeeId={ID}&api-version={Api_VERSION} \
+https://localhost:8081/Permission/GetPermissions?employeeId={ID}&api-version={Api_VERSION} \
 
 Example:
 
 curl -X 'GET' \
-  'https://localhost:8081/Permission?employeeId=1&api-version={Api_VERSION}' \
+  'https://localhost:8081/Permission/GetPermissions?employeeId=1&api-version={Api_VERSION}' \
   -H 'accept: */*' \
 
 ### Request Permission comparison result
 
   curl -X 'POST' \
-    'https://localhost:8081/Permission?api-version=1' \
+    'https://localhost:8081/Permission/RequestPermission?api-version=1' \
     -H 'accept: */*' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -85,7 +90,7 @@ curl -X 'GET' \
 
 Example
   curl -X 'POST' \
-    'https://localhost:8081/Permission?api-version=1' \
+    'https://localhost:8081/Permission/RequestPermission?api-version=1' \
     -H 'accept: */*' \
     -H 'Content-Type: application/json' \
     -d '{
