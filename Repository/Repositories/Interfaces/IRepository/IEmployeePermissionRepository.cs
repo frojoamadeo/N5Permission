@@ -9,6 +9,8 @@ namespace Repository.Repositories.Interfaces.IRepository
 {
     public interface IEmployeePermissionRepository : IRepository<EmployeePermission>
     {
-        Task<IEnumerable<EmployeePermission>> GetByEmployeeIdAsync(int employeeId);
+        public Task<IEnumerable<EmployeePermission>> GetByEmployeeIdAsync(int employeeId);
+        public void DeleteAllByEmployeeIdAsync(int employeeId);
+        public Task AddBulkAsync(List<EmployeePermission> entities);
     }
 }

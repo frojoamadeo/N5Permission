@@ -11,7 +11,7 @@ namespace Infraestructure.Events.Producer
 {
     public sealed class PermissionOperationProducer : IPermissionOperationProducer
     {
-        private readonly string server = "localhost:9092";
+        private readonly string server = "kafka:29092";
         private readonly string topic = "permission";
 
         public async Task<bool> SendPermissionOperationToTopic(string message)

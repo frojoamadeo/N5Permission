@@ -13,8 +13,8 @@ namespace Events.Consumer
     public sealed class PermissionOperationConsumer : IHostedService
     {
         private readonly string topic = "permission";
-        private readonly string groupId = "dummyGroup";
-        private readonly string bootstrapServers = "localhost:9092";
+        private readonly string groupId = "GroupNew";
+        private readonly string bootstrapServers = "0.0.0.0:9092";
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -22,7 +22,7 @@ namespace Events.Consumer
             {
                 GroupId = groupId,
                 BootstrapServers = bootstrapServers,
-                AutoOffsetReset = AutoOffsetReset.Earliest
+                AutoOffsetReset = AutoOffsetReset.Earliest,
             };
 
             try

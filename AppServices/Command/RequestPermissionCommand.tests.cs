@@ -6,7 +6,7 @@ using FakeItEasy;
 using Shouldly;
 using System.Text.Json;
 using Xunit;
-using static AppServices.Command.AddPermissionCommand;
+using static AppServices.Command.RequestPermissionCommand;
 
 namespace AppServices.Command
 {
@@ -29,13 +29,13 @@ namespace AppServices.Command
                 //Arrenge
                 var handler = new AddPermissionCommandHandler(_permissionOperationProducer, _permissionService);
 
-                var request = new AddPermissionCommand();
-                request.Permission = Domain.PermissionType.Read;
+                var request = new RequestPermissionCommand();
+                request.Permission = Domain.PermissionType.Read.ToString();
                 request.EmployeeId = 1;
 
                 var entity = new EmployeePermission();
                 entity.EmployeeId = (int)request.EmployeeId!;
-                entity.PermissionType = (Domain.PermissionType)request.Permission!;
+                entity.PermissionType = Domain.PermissionType.Read;
                 A.CallTo(() => _permissionService.AddEmployeePermission(entity))
                     .Returns(Task.CompletedTask);
 
@@ -63,8 +63,8 @@ namespace AppServices.Command
                 //Arrenge
                 var handler = new AddPermissionCommandHandler(_permissionOperationProducer, _permissionService);
 
-                var request = new AddPermissionCommand();
-                request.Permission = Domain.PermissionType.Read;
+                var request = new RequestPermissionCommand();
+                request.Permission = Domain.PermissionType.Read.ToString();
                 request.EmployeeId = -1;
 
                 //Act

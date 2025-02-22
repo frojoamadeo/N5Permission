@@ -1,8 +1,10 @@
 using AppServices.Command;
 using AppServices.Query;
+using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Text.Json;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace N5TeachLead.Controllers;
@@ -11,7 +13,8 @@ namespace N5TeachLead.Controllers;
 /// Manage Employee Permissions
 /// </summary>
 [ApiController]
-[Route("[controller]")]
+[ApiVersion(1.0)]
+[Route("[controller]/[action]")]
 public class PermissionController : ControllerBase
 {
     private readonly ISender _sender;
@@ -24,30 +27,6 @@ public class PermissionController : ControllerBase
         _logger = logger;
         _sender = sender;
     }
-
-    /// <summary>
-    /// Add Permission to Employee
-    /// </summary>
-    /// <param name="command"></param>
-    /// <returns></returns>
-    [HttpPost(Name = "AddPermissions")]
-    public async Task<ActionResult> AddPermission(AddPermissionCommand command)
-    {
-        try
-        {
-            _logger.LogInformation("Adding permission {permission} to employeeId {employeeId}", command.Permission?.ToString(), command.EmployeeId);
-
-            await _sender.Send(command);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Method: {method}: Error trying to add permission {permission} to employeeId {employeeId}", nameof(AddPermission), command.Permission?.ToString(), command.EmployeeId);
-            return StatusCode((int)HttpStatusCode.InternalServerError);
-        }
-
-        return Ok();
-    }
-
 
     /// <summary>
     /// Get all Employee permissions
@@ -68,21 +47,54 @@ public class PermissionController : ControllerBase
         {
             _logger.LogError(ex, "Method: {method}. Error trying to get permission from employeeId {employeeId}", nameof(GetPermissions), employeeId);
             return StatusCode((int)HttpStatusCode.InternalServerError);
-        }        
+        }
     }
 
-    //[HttpGet(Name = "GetPermissions")]
-    //public async Task<ActionResult> UpdatePermissions(int employeeId)
-    //{
-    //    try
-    //    {
-    //        var permissions = await _sender.Send(new GetPermissionQuery(employeeId));
-    //        return Ok(permissions);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        _logger.LogError(ex, "Error trying to get permission from employeeId {employeeId}", employeeId);
-    //        return StatusCode((int)HttpStatusCode.InternalServerError);
-    //    }
-    //}
+    /// <summary>
+    /// Request Permission to Employee
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns></returns>
+    [HttpPost(Name = "RequestPermissions")]
+    public async Task<ActionResult> RequestPermission(RequestPermissionCommand command)
+    {
+        try
+        {
+            _logger.LogInformation("Adding permission {permission} to employeeId {employeeId}", command.Permission?.ToString(), command.EmployeeId);
+
+            await _sender.Send(command);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Method: {method}: Error trying to add permission {permission} to employeeId {employeeId}", nameof(RequestPermission), command.Permission?.ToString(), command.EmployeeId);
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        return Ok();
+    }
+
+    /// <summary>
+    /// Modify Permission to Employee
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns></returns>
+    [HttpPost(Name = "ModifyPermission")]
+    public async Task<ActionResult> ModifyPermission(ModifyPermissionCommand command)
+    {
+        try
+        {
+            var serialize = JsonSerializer.Serialize(command.Permissions);
+            _logger.LogInformation("Adding permissions {permissions} to employeeId {employeeId}", serialize, command.EmployeeId);
+
+            await _sender.Send(command);
+        }
+        catch (Exception ex)
+        {
+            var serialize = JsonSerializer.Serialize(command.Permissions);
+            _logger.LogError(ex, "Method: {method}: Error trying to add permissions {permissions} to employeeId {employeeId}", nameof(RequestPermission), serialize, command.EmployeeId);
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        return Ok();
+    }
 }

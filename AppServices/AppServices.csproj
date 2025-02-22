@@ -23,4 +23,10 @@
 		<DependentUpon>$([MSBuild]::ValueOrDefault('%(Filename)', '').Replace('.tests', '')).cs</DependentUpon>
 		</None>
   </ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Command\RequestPermissionCommand.tests.cs">
+	    <DependentUpon>RequestPermissionCommand.cs</DependentUpon>
+	  </None>
+	</ItemGroup>
 </Project>

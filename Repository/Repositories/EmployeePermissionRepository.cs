@@ -33,9 +33,27 @@ namespace Repository.Repositories
             }
         }
 
+        public async Task AddBulkAsync(List<EmployeePermission> entities)
+        {
+            try
+            {
+                await _dbSet.AddRangeAsync(entities);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public Task DeleteAsync(EmployeePermission entity)
         {
             throw new NotImplementedException();
+        }
+
+        public void DeleteAllByEmployeeIdAsync(int employeeId)
+        {
+            var entities = _dbSet.Where(x => x.EmployeeId == employeeId);
+            _dbSet.RemoveRange(entities);
         }
 
         public Task<EmployeePermission> GetByIdAsync(int id)

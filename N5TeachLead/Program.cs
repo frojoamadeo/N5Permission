@@ -1,4 +1,5 @@
 using AppServices;
+using Asp.Versioning;
 using Domain.Settings;
 using Microsoft.EntityFrameworkCore;
 using Persistance;
@@ -30,6 +31,18 @@ builder.Services.AddEntityFramewrokService(connectionString!);
 ////Setup Elasticsearch
 //builder.Services.Configure<ElasticSettings>(builder.Configuration.GetSection("ElasticSettings"));
 
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+})
+    .AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
+
 //Register Services and Repositories
 builder.Services.RegisterServicesAndRepositories();
 
@@ -51,16 +64,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-if (app.Environment.IsDevelopment())
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        //replace DataContext with your Db Context name
-        var dataContext = scope.ServiceProvider.GetRequiredService<PermissionDbContext>();
-        dataContext.Database.Migrate();
-    }
-}
 
 app.Run();
 
@@ -86,7 +89,7 @@ void configureLoggin()
 ElasticsearchSinkOptions ConfigureElasticSink(IConfigurationRoot configurationRoot, string environment)
 {
     //var uri = Environment.GetEnvironmentVariable("PRIVATE_IP") ?? configurationRoot["ElasticConfiguration:Uri"];
-    var uri = Environment.GetEnvironmentVariable("ELASTICSEARCH_URI") ?? configurationRoot["ElasticConfiguration:Uri"];
+    var uri = Environment.GetEnvironmentVariable("ELASTICSEARCH_HOSTS") ?? configurationRoot["ElasticConfiguration:Uri"];
 
     return new ElasticsearchSinkOptions(new Uri(uri))
     {

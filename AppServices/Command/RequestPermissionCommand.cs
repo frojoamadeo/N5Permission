@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace AppServices.Command
 {
-    public sealed class AddPermissionCommand: IRequest<string>
+    public sealed class RequestPermissionCommand: IRequest<string>
     {
-        public PermissionType? Permission { get; set; }
+        public string? Permission { get; set; }
         public int? EmployeeId { get; set; }
 
-        public sealed class AddPermissionCommandHandler : IRequestHandler<AddPermissionCommand, string>
+        public sealed class AddPermissionCommandHandler : IRequestHandler<RequestPermissionCommand, string>
         {
             private readonly IPermissionOperationProducer _permissionOperationProducer;
             private readonly IPermissionService _permissionService;
@@ -29,7 +29,8 @@ namespace AppServices.Command
                 _permissionOperationProducer = permissionOperationProducer;
                 _permissionService = permissionService;
             }
-            public async Task<string> Handle(AddPermissionCommand request, CancellationToken cancellationToken)
+
+            public async Task<string> Handle(RequestPermissionCommand request, CancellationToken cancellationToken)
             {
                 if(request.EmployeeId.GetValueOrDefault() <= 0)
                 {
@@ -37,21 +38,27 @@ namespace AppServices.Command
                 }
                 var permissions = (await _permissionService.GetPermissionsByEmployeeId((int)request.EmployeeId!)).Select(x => x.PermissionType);
 
-                if (permissions.ToList().Contains(request.Permission ?? PermissionType.Undefinded))
+                Enum.TryParse(request.Permission, out PermissionType permission);
+                if (permissions.ToList().Contains(permission))
                 {
                     return "Permission already contained";
+                }
+
+                if(permission == PermissionType.Undefinded)
+                {
+                    return "Permission incorrect";
                 }
 
                 await _permissionService.AddEmployeePermission(new Domain.Entities.EmployeePermission()
                 {
                     EmployeeId = (int)request.EmployeeId!,
-                    PermissionType = (PermissionType)request.Permission!
+                    PermissionType = permission!
                 });
 
                 await _permissionService.SaveChanges();
 
                 var permissionOperationModel = new PermissionOperationModel();
-                permissionOperationModel.NameOperation = "Read";
+                permissionOperationModel.NameOperation = "request";
                 string message = JsonSerializer.Serialize(permissionOperationModel);
                 await _permissionOperationProducer.SendPermissionOperationToTopic(message);
 

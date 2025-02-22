@@ -48,6 +48,21 @@ namespace Infraestructure.Services
             }
         }
 
+        public async Task UpdateEmployeePermissions(List<EmployeePermission> employeePermissions)
+        {
+            try
+            {
+                var employeeId = employeePermissions.First().EmployeeId;
+                _employeePermissionRepository.DeleteAllByEmployeeIdAsync(employeeId);
+                await _employeePermissionRepository.AddBulkAsync(employeePermissions);
+                await _employeePermissionRepository.SaveAsync();
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
         public async Task SaveChanges()
         {
             try

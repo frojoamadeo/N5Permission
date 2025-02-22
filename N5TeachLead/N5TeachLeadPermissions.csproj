@@ -9,6 +9,7 @@
 <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <OutputType>Exe</OutputType>
 	  <InvariantGlobalization>false</InvariantGlobalization>
+	  <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 
   </PropertyGroup>
 
@@ -21,6 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
     <PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.17.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageReference Include="Serilog" Version="4.2.0" />
@@ -34,6 +36,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppServices\AppServices.csproj" />
+    <ProjectReference Include="..\DbMigrations\DbMigrations.csproj" />
     <ProjectReference Include="..\Persistance\Persistance.csproj" />
     <ProjectReference Include="..\Services\Infraestructure.csproj" />
   </ItemGroup>

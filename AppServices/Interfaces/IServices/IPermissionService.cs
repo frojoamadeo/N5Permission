@@ -11,6 +11,7 @@ namespace AppServices.Interfaces.IServices
     {
         public Task<IEnumerable<EmployeePermission>> GetPermissionsByEmployeeId(int employeeId);
         Task AddEmployeePermission(EmployeePermission employeePermission);
+        Task UpdateEmployeePermissions(List<EmployeePermission> employeePermissions);
         Task SaveChanges();
     }
 }
