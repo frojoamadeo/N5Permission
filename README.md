@@ -29,6 +29,9 @@
 
 ## Installation and Start
 
+Video with a demostration
+https://www.youtube.com/watch?v=l3MLpgyWJC4
+
 1. Install the certification manually. \
     [why? Microsoft is no longer creating directories when generates certificates] (https://learn.microsoft.com/en-us/dotnet/core/compatibility/aspnet-core/9.0/certificate-export) https://learn.microsoft.com/en-us/aspnet/core/security/docker-https?view=aspnetcore-9.0 \
     1.1 Go to solution folder in cmd/powershel \
@@ -63,7 +66,6 @@ Navigate to [https://localhost:8081/swagger/index.html](https://localhost:8081/s
 
 ### Before manual testing:
 
--For Kafka, I created a consumer proyect in the solution. Is not being deployed to docker. With local Kafka works fine, in docker I am not able to consume. Need more investigation \
 -I integrated Elastic and I implemenetd an elastic services because I was not sure is we need to log entire entitis calling Elastic throw client or just the integration
 
 ### Get Permissions by employee:
