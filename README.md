@@ -59,7 +59,7 @@
      ```
 
 ### Swagger
-Navigate to ```[https://localhost:5001/swagger](https://localhost:8081/swagger/index.html)``` .
+Navigate to [https://localhost:8081/swagger/index.html](https://localhost:8081/swagger/index.html) .
 
 ### Before manual testing:
 
