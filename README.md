@@ -55,7 +55,7 @@
   3.2 Update N5Permission\DbMigrations\appsettings.json connection string by updateing local IP \
   2.3 Run: 
     ```
-   dotnet ef update
+    dotnet ef database update
      ```
 
 ### Swagger
